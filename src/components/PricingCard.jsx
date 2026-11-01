@@ -6,7 +6,7 @@ export default function PricingCard({ plan, onChoose }) {
       {plan.featured && <div className="popular-ribbon">MOST POPULAR</div>}
       <div className="plan-heading"><span className="plan-subtitle">{plan.subtitle}</span><h3>{plan.name}</h3></div>
       <p className="plan-description">{plan.description}</p>
-      <div className="plan-price"><span className="currency">₹</span><strong>{plan.rate.toLocaleString('en-IN')}</strong><span className="per-flat">/ flat / month</span></div>
+      <div className="plan-price"><span className="currency">₹</span><strong className="is-range">{plan.rateMin.toLocaleString('en-IN')}–{plan.rateMax.toLocaleString('en-IN')}</strong><span className="per-flat">/ flat / month</span></div>
       <div className="plan-rule" />
       <span className="features-label">WHAT'S INCLUDED</span>
       <ul className="plan-features">{plan.features.map((feature) => <li key={feature}><span className="feature-check"><Check size={13} /></span>{feature}</li>)}</ul>

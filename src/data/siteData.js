@@ -1,40 +1,46 @@
-import { Brush, Bug, Droplets, Flower2, Hammer, Lightbulb, Shield, Wrench, Wind } from 'lucide-react'
+import { ArrowUpDown, Brush, Bug, Building2, Droplets, Flower2, Hammer, Lightbulb, Shield, UserRoundCheck, Wrench, Wind } from 'lucide-react'
 
 export const services = [
-  { title: 'Housekeeping', badge: 'Care', description: 'Daily cleaning for lobbies, corridors, lifts and shared spaces.', icon: Brush, tone: 'blue' },
-  { title: 'Security services', badge: 'Guard', description: 'Professional security personnel and vigilant access support.', icon: Shield, tone: 'green' },
-  { title: 'Gardening & landscaping', badge: 'Green', description: 'Thoughtful green-space care, trimming and garden upkeep.', icon: Flower2, tone: 'lime' },
-  { title: 'Plumbing', badge: 'Flow', description: 'Responsive plumbing support for leaks, fittings and common areas.', icon: Droplets, tone: 'blue' },
-  { title: 'Electrical work', badge: 'Power', description: 'Routine checks and repairs for shared electrical systems.', icon: Lightbulb, tone: 'orange' },
-  { title: 'General maintenance', badge: 'Fix', description: 'Planned upkeep and minor repairs to keep things working.', icon: Wrench, tone: 'green' },
-  { title: 'Pest control', badge: 'Safe', description: 'Scheduled treatments to help maintain hygienic environments.', icon: Bug, tone: 'lime' },
-  { title: 'Water tank cleaning', badge: 'Pure', description: 'Periodic tank cleaning and hygiene-focused maintenance.', icon: Wind, tone: 'blue' },
-  { title: 'Renovation & repairs', badge: 'Build', description: 'Support for refreshes, painting and small improvement works.', icon: Hammer, tone: 'orange' },
+  { title: 'Housekeeping', badge: 'Care', description: 'Residential, commercial and institutional cleaning, including deep and periodic cleaning.', icon: Brush, tone: 'blue' },
+  { title: 'Security services', badge: 'Guard', description: 'Security guards, main-gate access control, and visitor and vehicle entry management.', icon: Shield, tone: 'green' },
+  { title: 'Gardening & landscaping', badge: 'Green', description: 'Garden, lawn and plant care, pruning, trimming and landscaping upkeep.', icon: Flower2, tone: 'lime' },
+  { title: 'Technical maintenance', badge: 'Fix', description: 'Routine building maintenance, minor civil repairs and preventive maintenance scheduling.', icon: Wrench, tone: 'green' },
+  { title: 'Plumbing', badge: 'Flow', description: 'Plumbing and sanitary maintenance for properties and common areas.', icon: Droplets, tone: 'blue' },
+  { title: 'Electrical works', badge: 'Power', description: 'Electrical maintenance and repair coordination.', icon: Lightbulb, tone: 'orange' },
+  { title: 'Pest control', badge: 'Safe', description: 'Scheduled pest control to help maintain hygienic environments.', icon: Bug, tone: 'lime' },
+  { title: 'Water tank cleaning', badge: 'Pure', description: 'Overhead and underground water-tank cleaning.', icon: Wind, tone: 'blue' },
+  { title: 'Renovation & property improvement', badge: 'Build', description: 'Home and commercial renovation, painting, finishing and minor civil modifications.', icon: Hammer, tone: 'orange' },
+  { title: 'Personal security & bodyguards', badge: 'Protect', description: 'Personal security guards and bodyguard services.', icon: UserRoundCheck, tone: 'green' },
+  { title: 'Lift consultancy', badge: 'Lift', description: 'Lift requirement assessment, AMC vendor coordination and upgrade advisory.', icon: ArrowUpDown, tone: 'blue' },
+  { title: 'Integrated facility management', badge: '360°', description: 'Multi-service, vendor and staff coordination under one partner.', icon: Building2, tone: 'lime' },
 ]
 
+// rateMin / rateMax: indicative price range per flat, per month (for a 100-flat society)
 export const plans = [
   {
-    name: 'Essential', subtitle: 'Reliable everyday essentials', rate: 799, tone: 'essential',
-    description: 'For communities looking to cover the day-to-day basics.',
-    features: ['Common-area housekeeping', 'Basic gardening upkeep', 'Routine common-area checks', 'Monthly service summary'],
+    name: 'Essential', subtitle: 'For smaller societies', rateMin: 450, rateMax: 650, tone: 'essential',
+    description: 'Everyday housekeeping, gardening and maintenance.',
+    features: ['Housekeeping', 'Gardening', 'General maintenance'],
   },
   {
-    name: 'Professional', subtitle: 'A balanced, managed solution', rate: 1299, tone: 'professional', featured: true,
-    description: 'A stronger all-round package for active residential communities.',
-    features: ['Everything in Essential', 'Dedicated maintenance coordination', 'Scheduled pest-control coordination', 'Priority issue tracking', 'Dedicated relationship contact'],
+    name: 'Professional', subtitle: 'For mid/large societies', rateMin: 900, rateMax: 1300, tone: 'professional', featured: true,
+    description: 'Adds security, pest control and tank cleaning.',
+    features: ['Everything in Essential', 'Security services', 'Pest control', 'Water tank cleaning'],
   },
   {
-    name: 'Complete 360°', subtitle: 'End-to-end property care', rate: 1899, tone: 'complete',
-    description: 'A broader integrated plan with more services coordinated together.',
-    features: ['Everything in Professional', 'Integrated service coordination', 'Water tank cleaning schedule', 'Expanded inspection checklist', 'Quarterly review meeting'],
+    name: 'Complete 360°', subtitle: 'For premium societies', rateMin: 1500, rateMax: 2200, tone: 'complete',
+    description: 'Full 360° coverage with technical and renovation support.',
+    features: ['Everything in Professional', 'Technical maintenance', 'Plumbing & electrical works', 'Renovation support', 'Preventive maintenance', 'And more…'],
   },
 ]
 
 export const benefits = [
-  { title: 'Trained professionals', description: 'Teams briefed on service standards, safety and respectful site conduct.', icon: 'people' },
-  { title: 'Quality assurance', description: 'Clear checklists and regular reviews help keep standards consistent.', icon: 'quality' },
-  { title: 'Transparent pricing', description: 'Defined scope, understandable estimates and no avoidable surprises.', icon: 'price' },
-  { title: 'Timely delivery', description: 'Planned routines and clear escalation paths for service requests.', icon: 'time' },
-  { title: 'Dedicated relationship manager', description: 'A clear point of contact for coordination, feedback and follow-up.', icon: 'manager' },
-  { title: 'Flexible service plans', description: 'Packages can be discussed around your property and agreed requirements.', icon: 'flex' },
+  { title: 'Single-point coordination', description: 'Multiple facility requirements managed through one service partner.', icon: 'people' },
+  { title: 'Customised solutions', description: 'Service plans aligned with property size, operating needs and budget.', icon: 'quality' },
+  { title: 'Clear responsibilities', description: 'Agreed scopes, schedules and service expectations.', icon: 'price' },
+  { title: 'Operational focus', description: 'Emphasis on cleanliness, maintenance follow-through and reliable coordination.', icon: 'time' },
+  { title: 'Flexible engagement', description: 'Support for recurring contracts or individual service requirements.', icon: 'manager' },
+  { title: 'Regional reach', description: 'Serving Pune, Pimpri-Chinchwad, Nashik, Mumbai, Thane and Nagpur. Coming to your city soon.', icon: 'flex' },
 ]
+
+export const cities = ['Pune', 'Pimpri-Chinchwad', 'Nashik', 'Mumbai', 'Thane', 'Nagpur']

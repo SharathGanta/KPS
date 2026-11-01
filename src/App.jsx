@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { ArrowRight, Check, CircleCheck, Clock3, Leaf, Menu, ShieldCheck, Sparkles, Users, X } from 'lucide-react'
-import { services, plans, benefits } from './data/siteData.js'
+import { services, plans, benefits, cities } from './data/siteData.js'
 import { contactService } from './services/contactService.js'
 import SectionHeading from './components/SectionHeading.jsx'
 import ServiceCard from './components/ServiceCard.jsx'
@@ -8,9 +8,12 @@ import PricingCard from './components/PricingCard.jsx'
 import ContactForm from './components/ContactForm.jsx'
 import Footer from './components/Footer.jsx'
 
-const companyPhone = import.meta.env.VITE_COMPANY_PHONE || '+91 00000 00000'
-const companyEmail = import.meta.env.VITE_COMPANY_EMAIL || 'hello@kpsenterprises.example'
+const companyPhone = import.meta.env.VITE_COMPANY_PHONE || '+91 9822021097/94044904190'
+const companyEmail = import.meta.env.VITE_COMPANY_EMAIL || 'kps.enterprisenb@gmail.com'
 const location = import.meta.env.VITE_SERVICE_LOCATION || 'Pune, Maharashtra'
+
+// 45000 -> "45K", 130000 -> "1.3L"
+const formatShort = (n) => (n >= 100000 ? `${+(n / 100000).toFixed(2)}L` : `${n / 1000}K`)
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -95,9 +98,9 @@ function App() {
             </div>
             <div className="about-copy">
               <SectionHeading eyebrow="WHO WE ARE" title={<>A better way to<br /><span>manage your space.</span></>} />
-              <p className="body-copy">KPS Enterprises brings essential facility services together under one dependable partner. We help residential societies and commercial properties run smoothly through consistent care, clear communication and accountable service.</p>
-              <p className="body-copy">From spotless common areas to dependable maintenance, our approach is built around the people who use your spaces every day.</p>
-              <div className="about-points"><div><span className="check-bullet"><Check size={14} /></span> A single point of contact</div><div><span className="check-bullet"><Check size={14} /></span> Service plans to fit your property</div><div><span className="check-bullet"><Check size={14} /></span> Transparent scope and reporting</div></div>
+              <p className="body-copy">KPS Enterprises is an Integrated Facilities Management (IFM) service provider helping residential communities, commercial establishments, corporate offices and institutional premises operate safely, cleanly and efficiently. With 2 years of experience, we deliver coordinated services tailored to each site.</p>
+              <p className="body-copy">Our objective is to simplify facility management with a single point of coordination across housekeeping, security, maintenance, hygiene, landscaping, renovation and specialist consultancy.</p>
+              <div className="about-points"><div><span className="check-bullet"><Check size={14} /></span> One Partner: coordinated facility services</div><div><span className="check-bullet"><Check size={14} /></span> Practical Solutions: tailored to site requirements</div><div><span className="check-bullet"><Check size={14} /></span> Accountability: clear scopes and follow-up</div></div>
               <a href="#why-kps" className="text-link">Discover the KPS difference <ArrowRight size={16} /></a>
             </div>
           </div>
@@ -115,11 +118,11 @@ function App() {
           <div className="container">
             <SectionHeading eyebrow="SIMPLE, TRANSPARENT PLANS" title={<>The right level of care.<br /><span>One clear monthly price.</span></>} centered description="Choose a package that suits your society. Final pricing is confirmed after a site assessment and scope review." />
             <div className="pricing-grid">{plans.map((plan) => <PricingCard key={plan.name} plan={plan} onChoose={() => scrollToContact(plan.name)} />)}</div>
-            <div className="pricing-note"><span className="note-info">i</span><p>Illustrative starting rates per flat, per month. Actual quote may vary by location, number of flats, staffing, service frequency and agreed scope.</p></div>
+            <div className="pricing-note"><span className="note-info">i</span><p>Indicative pricing per flat, per month (for 100 flats) and can be customised. Added benefits at no additional cost: common-area pest control 2 times a year and water tank cleaning 1 time a year. Actual quote may vary by location, number of flats, staffing, service frequency and agreed scope.</p></div>
             <div className="society-example">
               <div className="society-icon"><Users size={25} /></div>
               <div className="society-copy"><span className="mini-eyebrow">QUICK EXAMPLE</span><strong>Planning for a 100-flat society?</strong><p>Use the estimates below to start a budget conversation. These are indicative only, not a binding quote.</p></div>
-              <div className="society-rates">{plans.map((plan) => <button key={plan.name} className={selectedPlan === plan.name ? 'society-rate active' : 'society-rate'} onClick={() => setSelectedPlan(plan.name)}><span>{plan.name}</span><strong>₹{(plan.rate * 100).toLocaleString('en-IN')}<small>/mo</small></strong></button>)}</div>
+              <div className="society-rates">{plans.map((plan) => <button key={plan.name} className={selectedPlan === plan.name ? 'society-rate active' : 'society-rate'} onClick={() => setSelectedPlan(plan.name)}><span>{plan.name}</span><strong>₹{formatShort(plan.rateMin * 100)}–{formatShort(plan.rateMax * 100)}<small>/mo</small></strong></button>)}</div>
             </div>
           </div>
         </section>
@@ -144,7 +147,7 @@ function App() {
               <div className="contact-details">
                 <a href={`tel:${companyPhone.replace(/[^\d+]/g, '')}`}><span className="contact-detail-icon">☎</span><span><small>Call us</small><strong>{companyPhone}</strong></span></a>
                 <a href={`mailto:${companyEmail}`}><span className="contact-detail-icon">✉</span><span><small>Email us</small><strong>{companyEmail}</strong></span></a>
-                <div><span className="contact-detail-icon">⌖</span><span><small>Service location</small><strong>{location}</strong></span></div>
+                <div><span className="contact-detail-icon">⌖</span><span><small>Service locations</small><strong>{cities.join(' | ')}</strong></span></div>
               </div>
               <div className="contact-assurance"><ShieldCheck size={18} /><span>Your details are used only to respond to your enquiry.</span></div>
             </div>
@@ -152,7 +155,7 @@ function App() {
           </div>
         </section>
       </main>
-      <Footer companyEmail={companyEmail} companyPhone={companyPhone} location={location} />
+      <Footer companyEmail={companyEmail} companyPhone={companyPhone} location={cities.join(' | ')} />
     </>
   )
 }
